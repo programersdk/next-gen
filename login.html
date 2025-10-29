@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="Style\logoin.css">
+</head>
+<body>
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <!-- Auth Hero -->
+        <div class="auth-hero">
+            <h1><i class="fas fa-graduation-cap"></i>Welcome to EduConnect</h1>
+            <p>Join thousands of educational institutions using our platform to streamline school management and enhance communication.</p>
+            
+            <ul class="auth-features">
+                <li><i class="fas fa-check-circle"></i> Smart Dashboards for all users</li>
+                <li><i class="fas fa-check-circle"></i> Real-time communication tools</li>
+                <li><i class="fas fa-check-circle"></i> Student performance tracking</li>
+                <li><i class="fas fa-check-circle"></i> Secure digital payments</li>
+                <li><i class="fas fa-check-circle"></i> Multilingual interface support</li>
+            </ul>
+        </div>
+        
+        <!-- Auth Form Container -->
+        <div class="auth-form-container">
+            <div class="auth-form-wrapper">
+                <!-- Logo -->
+                <div class="auth-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>EduConnect</span>
+                </div>
+                
+                <!-- Auth Tabs -->
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Login</div>
+                    <div class="auth-tab" data-tab="signup">Sign Up</div>
+                </div>
+                
+                <!-- Login Form -->
+                <form class="auth-form active" id="loginForm">
+                    <!-- Role Selection -->
+                    <div class="role-selection">
+                        <div class="role-option selected" data-role="student">
+                            <div class="role-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="role-name">Student</div>
+                        </div>
+                        <div class="role-option" data-role="parent">
+                            <div class="role-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="role-name">Parent</div>
+                        </div>
+                        <div class="role-option" data-role="management">
+                            <div class="role-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="role-name">School Management</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="loginEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="loginPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span>Login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="divider">
+                        <span>Or continue with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-microsoft"></i>
+                            <span>Microsoft</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" class="switch-to-signup">Sign up</a>
+                    </div>
+                </form>
+                
+                <!-- Signup Form -->
+                <form class="auth-form" id="signupForm">
+                    <!-- Role Selection -->
+                    <div class="role-selection">
+                        <div class="role-option selected" data-role="student">
+                            <div class="role-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="role-name">Student</div>
+                        </div>
+                        <div class="role-option" data-role="parent">
+                            <div class="role-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="role-name">Parent</div>
+                        </div>
+                        <div class="role-option" data-role="management">
+                            <div class="role-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="role-name">School Management</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Student Signup -->
+                    <div class="signup-role" data-role="student">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="studentFirstName">First Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="studentFirstName" class="form-control" placeholder="Enter your first name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="studentLastName">Last Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="studentLastName" class="form-control" placeholder="Enter your last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="studentEmail">Email Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="studentEmail" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="studentSchoolCode">School Code</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-school input-icon"></i>
+                                <input type="text" id="studentSchoolCode" class="form-control" placeholder="Enter your school code" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="studentGrade">Grade/Class</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-graduation-cap input-icon"></i>
+                                <input type="text" id="studentGrade" class="form-control" placeholder="Enter your grade/class" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="studentPassword">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-lock input-icon"></i>
+                                    <input type="password" id="studentPassword" class="form-control" placeholder="Create a password" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="studentConfirmPassword">Confirm Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-lock input-icon"></i>
+                                    <input type="password" id="studentConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Parent Signup -->
+                    <div class="signup-role" data-role="parent" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="parentFirstName">First Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="parentFirstName" class="form-control" placeholder="Enter your first name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="parentLastName">Last Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="parentLastName" class="form-control" placeholder="Enter your last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="parentEmail">Email Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="parentEmail" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="parentPhone">Phone Number</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="parentPhone" class="form-control" placeholder="Enter your phone number" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="parentStudentId">Student ID</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-card input-icon"></i>
+                                <input type="text" id="parentStudentId" class="form-control" placeholder="Enter your child's student ID" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="parentPassword">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-lock input-icon"></i>
+                                    <input type="password" id="parentPassword" class="form-control" placeholder="Create a password" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="parentConfirmPassword">Confirm Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-lock input-icon"></i>
+                                    <input type="password" id="parentConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- School Management Signup -->
+                    <div class="signup-role" data-role="management" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label" for="schoolName">School Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-school input-icon"></i>
+                                <input type="text" id="schoolName" class="form-control" placeholder="Enter your school name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="adminFirstName">First Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="adminFirstName" class="form-control" placeholder="Enter your first name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="adminLastName">Last Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="adminLastName" class="form-control" placeholder="Enter your last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="adminEmail">Email Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="adminEmail" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="adminPhone">Phone Number</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="adminPhone" class="form-control" placeholder="Enter your phone number" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="adminID">Employee ID</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-badge input-icon"></i>
+                                <input type="text" id="adminID" class="form-control" placeholder="Enter your employee ID" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="schoolAddress">School Address</label>
+                            <textarea id="schoolAddress" class="form-control" placeholder="Enter your school address" rows="2"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="adminPassword">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-lock input-icon"></i>
+                                    <input type="password" id="adminPassword" class="form-control" placeholder="Create a password" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="adminConfirmPassword">Confirm Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-lock input-icon"></i>
+                                    <input type="password" id="adminConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="remember-me">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span>Create Account</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" class="switch-to-login">Login</a>
+                    </div>
+                    
+                    <p class="terms">
+                        By creating an account, you agree to our
+                        <a href="#">Terms of Service</a> and
+                        <a href="#">Privacy Policy</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+  <script src="Script\logoin.js"></script>
+</body>
+</html>

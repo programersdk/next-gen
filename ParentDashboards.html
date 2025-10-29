@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Portal | EduConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #dbeafe;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --accent: #06d6a0;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --gray-light: #f1f5f9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+            font-size: 14px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background-color: var(--gray-light);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .menu-section {
+            margin-top: 25px;
+        }
+
+        .menu-section-title {
+            padding: 0 20px 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .page-title p {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 10px 15px 10px 40px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            width: 280px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            background-color: var(--gray-light);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: white;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .notifications {
+            position: relative;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-light);
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .notification-icon:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger);
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        /* Child Selector */
+        .child-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .child-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .child-option:hover {
+            border-color: var(--primary);
+        }
+
+        .child-option.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .child-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .child-info h3 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .child-info p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .welcome-text p {
+            color: var(--secondary);
+            max-width: 500px;
+        }
+
+        .welcome-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .welcome-stat {
+            text-align: center;
+        }
+
+        .welcome-stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .welcome-stat-label {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .stat-info h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-info p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-header h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-header a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+
+        /* Assignments */
+        .assignments-list {
+            list-style: none;
+        }
+
+        .assignment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .assignment-item:last-child {
+            border-bottom: none;
+        }
+
+        .assignment-info h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .assignment-info p {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .assignment-due {
+            text-align: right;
+        }
+
+        .due-date {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .due-status {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .due-status.urgent {
+            background-color: #fee2e2;
+            color: var(--danger);
+        }
+
+        .due-status.upcoming {
+            background-color: #fef3c7;
+            color: var(--warning);
+        }
+
+        .due-status.completed {
+            background-color: #dcfce7;
+            color: var(--success);
+        }
+
+        /* Messages */
+        .messages-list {
+            list-style: none;
+        }
+
+        .message-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .message-item:last-child {
+            border-bottom: none;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .message-text {
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .message-subject {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .message-unread {
+            background-color: #f0f9ff;
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+            margin-left: -12px;
+        }
+
+        /* Events */
+        .events-list {
+            list-style: none;
+        }
+
+        .event-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            text-align: center;
+            min-width: 50px;
+        }
+
+        .event-day {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .event-month {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+
+        .event-details h3 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .event-details p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Fee Status */
+        .fees-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fee-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .fee-status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .fee-paid {
+            background-color: #dcfce7;
+            color: var(--success);
+        }
+
+        .fee-pending {
+            background-color: #fef3c7;
+            color: var(--warning);
+        }
+
+        .fee-overdue {
+            background-color: #fee2e2;
+            color: var(--danger);
+        }
+
+        .fee-details {
+            list-style: none;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fee-item:last-child {
+            border-bottom: none;
+        }
+
+        .fee-name {
+            font-size: 0.9rem;
+        }
+
+        .fee-value {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pay-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .pay-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .action-btn {
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn i {
+            font-size: 1.25rem;
+        }
+
+        .action-btn span {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text, 
+            .sidebar .menu-item span,
+            .sidebar .menu-section-title,
+            .sidebar .user-info {
+                display: none;
+            }
+            
+            .sidebar-header {
+                justify-content: center;
+                padding: 20px 10px;
+            }
+            
+            .menu-item {
+                justify-content: center;
+                padding: 15px 10px;
+            }
+            
+            .sidebar-footer {
+                justify-content: center;
+            }
+            
+            .search-box input {
+                width: 200px;
+            }
+
+            .welcome-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .welcome-stats {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .search-box input {
+                width: 150px;
+            }
+
+            .child-selector {
+                flex-direction: column;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .top-bar {
+                padding: 16px;
+            }
+            
+            .dashboard-content {
+                padding: 16px;
+            }
+            
+            .search-box {
+                display: none;
+            }
+
+            .welcome-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">EduConnect</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <div class="menu-section">
+                <div class="menu-section-title">My Children</div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Academic Progress</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Attendance</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Performance</span>
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-section-title">Communication</div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Messages</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Meeting Requests</span>
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-section-title">Financial</div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Fee Payments</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Payment History</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+                <div class="user-name">John Davis</div>
+                <div class="user-role">Parent</div>
+            </div>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>Parent Dashboard</h1>
+                <p>Monitor your child's academic progress and stay connected with the school</p>
+            </div>
+            
+            <div class="top-bar-actions">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search assignments, messages...">
+                </div>
+                
+                <div class="notifications">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="notification-badge">3</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Child Selector -->
+            <div class="child-selector">
+                <div class="child-option selected">
+                    <div class="child-avatar">ED</div>
+                    <div class="child-info">
+                        <h3>Emma Davis</h3>
+                        <p>Grade 10 - Section A</p>
+                    </div>
+                </div>
+                <div class="child-option">
+                    <div class="child-avatar">MD</div>
+                    <div class="child-info">
+                        <h3>Michael Davis</h3>
+                        <p>Grade 7 - Section B</p>
+                    </div>
+                </div>
+                <div class="child-option">
+                    <div class="child-avatar">SD</div>
+                    <div class="child-info">
+                        <h3>Sophia Davis</h3>
+                        <p>Grade 5 - Section C</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <h2>Hello, John Davis!</h2>
+                    <p>You're viewing Emma's academic dashboard. She has 2 upcoming assignments and 94% attendance this month.</p>
+                </div>
+                <div class="welcome-stats">
+                    <div class="welcome-stat">
+                        <div class="welcome-stat-value">87%</div>
+                        <div class="welcome-stat-label">Overall Grade</div>
+                    </div>
+                    <div class="welcome-stat">
+                        <div class="welcome-stat-value">94%</div>
+                        <div class="welcome-stat-label">Attendance</div>
+                    </div>
+                    <div class="welcome-stat">
+                        <div class="welcome-stat-value">2</div>
+                        <div class="welcome-stat-label">Pending Tasks</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>94%</h3>
+                        <p>Attendance Rate</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3.8</h3>
+                        <p>GPA Score</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Pending Assignments</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>$450</h3>
+                        <p>Fee Balance</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Child Performance -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Academic Performance</h2>
+                            <a href="#">View Details</a>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Assignments -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Recent Assignments</h2>
+                            <a href="#">View All</a>
+                        </div>
+                        <ul class="assignments-list">
+                            <li class="assignment-item">
+                                <div class="assignment-info">
+                                    <h3>Mathematics Problem Set</h3>
+                                    <p>Algebra & Quadratic Equations</p>
+                                </div>
+                                <div class="assignment-due">
+                                    <div class="due-date">Due: Tomorrow</div>
+                                    <div class="due-status urgent">Not Submitted</div>
+                                </div>
+                            </li>
+                            <li class="assignment-item">
+                                <div class="assignment-info">
+                                    <h3>Science Lab Report</h3>
+                                    <p>Chemistry Experiment Analysis</p>
+                                </div>
+                                <div class="assignment-due">
+                                    <div class="due-date">Due: Oct 18</div>
+                                    <div class="due-status upcoming">In Progress</div>
+                                </div>
+                            </li>
+                            <li class="assignment-item">
+                                <div class="assignment-info">
+                                    <h3>English Essay</h3>
+                                    <p>Shakespeare's Macbeth Analysis</p>
+                                </div>
+                                <div class="assignment-due">
+                                    <div class="due-date">Submitted</div>
+                                    <div class="due-status completed">Graded: A</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Teacher Messages -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Teacher Messages</h2>
+                            <a href="#">View All</a>
+                        </div>
+                        <ul class="messages-list">
+                            <li class="message-item message-unread">
+                                <div class="message-avatar">MJ</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <div class="message-sender">Mr. Johnson</div>
+                                        <div class="message-time">Today, 10:30 AM</div>
+                                    </div>
+                                    <div class="message-text">Emma is doing excellent in Mathematics but needs to focus more on homework submissions.</div>
+                                    <div class="message-subject">Mathematics - Progress Update</div>
+                                </div>
+                            </li>
+                            <li class="message-item">
+                                <div class="message-avatar">DW</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <div class="message-sender">Dr. Wilson</div>
+                                        <div class="message-time">Yesterday, 3:15 PM</div>
+                                    </div>
+                                    <div class="message-text">Emma's science project was outstanding! She showed great understanding of the concepts.</div>
+                                    <div class="message-subject">Science - Project Feedback</div>
+                                </div>
+                            </li>
+                            <li class="message-item">
+                                <div class="message-avatar">MD</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <div class="message-sender">Ms. Davis</div>
+                                        <div class="message-time">Oct 10, 2:00 PM</div>
+                                    </div>
+                                    <div class="message-text">Reminder: Parent-Teacher meeting scheduled for October 15th at 10:00 AM.</div>
+                                    <div class="message-subject">English - Meeting Reminder</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Upcoming Events -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Upcoming Events</h2>
+                            <a href="#">View Calendar</a>
+                        </div>
+                        <ul class="events-list">
+                            <li class="event-item">
+                                <div class="event-date">
+                                    <div class="event-day">15</div>
+                                    <div class="event-month">Oct</div>
+                                </div>
+                                <div class="event-details">
+                                    <h3>Parent-Teacher Meeting</h3>
+                                    <p>10:00 AM - 12:00 PM</p>
+                                </div>
+                            </li>
+                            <li class="event-item">
+                                <div class="event-date">
+                                    <div class="event-day">20</div>
+                                    <div class="event-month">Oct</div>
+                                </div>
+                                <div class="event-details">
+                                    <h3>Science Fair</h3>
+                                    <p>All Day Event</p>
+                                </div>
+                            </li>
+                            <li class="event-item">
+                                <div class="event-date">
+                                    <div class="event-day">25</div>
+                                    <div class="event-month">Oct</div>
+                                </div>
+                                <div class="event-details">
+                                    <h3>Sports Day</h3>
+                                    <p>8:00 AM - 4:00 PM</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Fee Status -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Fee Status</h2>
+                            <a href="#">Payment History</a>
+                        </div>
+                        <div class="fees-summary">
+                            <div class="fee-amount">$450</div>
+                            <div class="fee-status fee-pending">Pending</div>
+                        </div>
+                        <ul class="fee-details">
+                            <li class="fee-item">
+                                <div class="fee-name">Tuition Fee</div>
+                                <div class="fee-value">$350</div>
+                            </li>
+                            <li class="fee-item">
+                                <div class="fee-name">Activity Fee</div>
+                                <div class="fee-value">$50</div>
+                            </li>
+                            <li class="fee-item">
+                                <div class="fee-name">Library Fee</div>
+                                <div class="fee-value">$30</div>
+                            </li>
+                            <li class="fee-item">
+                                <div class="fee-name">Technology Fee</div>
+                                <div class="fee-value">$20</div>
+                            </li>
+                        </ul>
+                        <button class="pay-btn">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <a href="#" class="action-btn">
+                    <i class="fas fa-comments"></i>
+                    <span>Message Teacher</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span>Schedule Meeting</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-file-download"></i>
+                    <span>Download Report</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Pay Fees</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-bell"></i>
+                    <span>Set Alerts</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Performance Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(performanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Math', 'Science', 'English', 'History', 'CS', 'Arts'],
+                datasets: [{
+                    label: 'Current Grades',
+                    data: [92, 88, 85, 90, 95, 82],
+                    backgroundColor: [
+                        '#3b82f6',
+                        '#8b5cf6',
+                        '#06d6a0',
+                        '#f59e0b',
+                        '#ef4444',
+                        '#64748b'
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            stepSize: 20
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Child selector functionality
+        document.querySelectorAll('.child-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.child-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                // In a real application, this would update the dashboard with the selected child's data
+                const childName = option.querySelector('h3').textContent;
+                document.querySelector('.welcome-text h2').textContent = `Hello, John Davis!`;
+                document.querySelector('.welcome-text p').textContent = `You're viewing ${childName}'s academic dashboard.`;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | EduConnect School Management Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="Style\pricing.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduConnect</span>
+            </div>
+            <nav>
+                <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Pricing.html">Pricing</a></li>
+                        <li><a href="contet.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="login.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Simple, Transparent Pricing</h1>
+            <p>Choose the perfect plan for your educational institution. All plans include core features with no hidden fees.</p>
+            
+            <div class="billing-toggle">
+                <span>Monthly Billing</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="billingToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Annual Billing <span class="discount-badge">Save 20%</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="container">
+        <div class="pricing-cards">
+            <!-- Basic Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Starter</div>
+                <div class="plan-description">Perfect for small schools and academies with basic management needs</div>
+                
+                <div class="price">
+                    <div class="price-amount" id="starterPrice">$29</div>
+                    <div class="price-period" id="starterPeriod">per month</div>
+                    <div class="price-note">Up to 100 students</div>
+                </div>
+                
+                <a href="#" class="btn btn-outline" style="width: 100%; margin-bottom: 30px;">Start Free Trial</a>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <span>Student & Staff Management</span></li>
+                    <li><i class="fas fa-check"></i> <span>Basic Attendance Tracking</span></li>
+                    <li><i class="fas fa-check"></i> <span>Gradebook & Report Cards</span></li>
+                    <li><i class="fas fa-check"></i> <span>Parent-Teacher Messaging</span></li>
+                    <li><i class="fas fa-check"></i> <span>Basic Analytics Dashboard</span></li>
+                    <li class="feature-disabled"><i class="fas fa-times"></i> <span>AI-Powered Insights</span></li>
+                    <li class="feature-disabled"><i class="fas fa-times"></i> <span>Advanced Fee Management</span></li>
+                    <li class="feature-disabled"><i class="fas fa-times"></i> <span>Multilingual Interface</span></li>
+                    <li class="feature-disabled"><i class="fas fa-times"></i> <span>Custom Branding</span></li>
+                </ul>
+            </div>
+            
+            <!-- Professional Plan (Popular) -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name">Professional</div>
+                <div class="plan-description">Ideal for medium to large schools with comprehensive management needs</div>
+                
+                <div class="price">
+                    <div class="price-amount" id="proPrice">$79</div>
+                    <div class="price-period" id="proPeriod">per month</div>
+                    <div class="price-note">Up to 1000 students</div>
+                </div>
+                
+                <a href="#" class="btn btn-primary" style="width: 100%; margin-bottom: 30px;">Start Free Trial</a>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <span>Everything in Starter</span></li>
+                    <li><i class="fas fa-check"></i> <span>Advanced Attendance with QR</span></li>
+                    <li><i class="fas fa-check"></i> <span>Interactive Analytics</span></li>
+                    <li><i class="fas fa-check"></i> <span>Digital Fee Management</span></li>
+                    <li><i class="fas fa-check"></i> <span>Homework & Assignment Tracker</span></li>
+                    <li><i class="fas fa-check"></i> <span>AI-Powered Insights</span></li>
+                    <li><i class="fas fa-check"></i> <span>Multilingual Interface</span></li>
+                    <li><i class="fas fa-check"></i> <span>Exam & Timetable Management</span></li>
+                    <li class="feature-disabled"><i class="fas fa-times"></i> <span>Custom Branding</span></li>
+                </ul>
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Enterprise</div>
+                <div class="plan-description">For large institutions and school districts with advanced requirements</div>
+                
+                <div class="price">
+                    <div class="price-amount" id="enterprisePrice">$119</div>
+                    <div class="price-period" id="enterprisePeriod">per month</div>
+                    <div class="price-note"> 200 students</div>
+                </div>
+                
+                <a href="#" class="btn btn-outline" style="width: 100%; margin-bottom: 30px;">Contact Sales</a>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <span>Everything in Professional</span></li>
+                    <li><i class="fas fa-check"></i> <span>Custom Branding & Portal</span></li>
+                    <li><i class="fas fa-check"></i> <span>Advanced AI Analytics</span></li>
+                    <li><i class="fas fa-check"></i> <span>Priority Support</span></li>
+                    <li><i class="fas fa-check"></i> <span>API Access</span></li>
+                    <li><i class="fas fa-check"></i> <span>Custom Integrations</span></li>
+                    <li><i class="fas fa-check"></i> <span>Dedicated Account Manager</span></li>
+                    <li><i class="fas fa-check"></i> <span>Multi-School Management</span></li>
+                    <li><i class="fas fa-check"></i> <span>Advanced Security Features</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Compare Plans in Detail</h2>
+                <p>See how our different plans stack up against each other</p>
+            </div>
+            
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>Starter</th>
+                            <th>Professional</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="feature-category">
+                            <td colspan="4">Student Management</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Student Profiles & Records</td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Attendance Tracking</td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">QR-Based Attendance</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        
+                        <tr class="feature-category">
+                            <td colspan="4">Academic Management</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Gradebook & Report Cards</td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Homework & Assignment Tracking</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Exam & Timetable Management</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        
+                        <tr class="feature-category">
+                            <td colspan="4">Communication</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Parent-Teacher Messaging</td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Multilingual Support</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Meeting Scheduling</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        
+                        <tr class="feature-category">
+                            <td colspan="4">Financial Management</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Basic Fee Tracking</td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Digital Payment Integration</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Advanced Financial Reports</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        
+                        <tr class="feature-category">
+                            <td colspan="4">Advanced Features</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">AI-Powered Insights</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Custom Branding</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">API Access</td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="x-cell"><i class="fas fa-times"></i></td>
+                            <td class="check-cell"><i class="fas fa-check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our pricing and plans</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a free trial available?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer a 30-day free trial for both Starter and Professional plans. You'll have full access to all features during the trial period with no obligation to continue.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I change plans later?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can upgrade or downgrade your plan at any time. When upgrading, you'll be prorated for the remainder of your billing cycle. Downgrades will take effect at the start of your next billing cycle.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and for our international customers, we also support regional payment methods like JazzCash and EasyPaisa.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer discounts for multiple schools?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer volume discounts for school districts or organizations with multiple institutions. Please contact our sales team for custom pricing based on your specific needs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a setup fee?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, there are no setup fees for any of our plans. We believe in transparent pricing with no hidden costs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What support is included?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All plans include email support with a 24-hour response time. Professional and Enterprise plans include priority support with faster response times. Enterprise customers also receive a dedicated account manager.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Ready to Transform Your School Management?</h2>
+            <p>Join thousands of educational institutions worldwide that are using EduConnect to streamline operations and enhance communication.</p>
+            <div class="cta-buttons-large">
+                <a href="login.html" class="btn btn-light">Start Free Trial</a>
+                <a href="login.html" class="btn btn-transparent">Schedule a Demo</a>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EduConnect</h3>
+                    <p>The next-generation platform for school management and parent-teacher communication.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="Pricing.html">Pricing</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#benefits">About Us</a></li>
+                        <li><a href="contet.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; EduConnect. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+    <script src="Script\pricing.js"></script>
+
+</body>
+</html>
